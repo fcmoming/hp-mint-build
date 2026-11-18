@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "projectreach",
+  "repo_url": "https://github.com/chrissotraidis/projectreach",
+  "name": "HaloPad",
+  "game": "Halo: Combat Evolved (Xbox) or Halo: Custom Edition (PC)",
+  "player_targets": [
+    "ios",
+    "macos"
+  ],
+  "free_space_gb": 35,
+  "player_help": "https://github.com/chrissotraidis/projectreach#build-and-install",
+  "reviewed_revision": null,
+  "notes": "HaloPad owns its release recipe. The updated source chooses Xbox-only from ISO/XISO, or both editions from the PC installer. Xbox-only skips Wine and PC translation; both editions need HaloCESetup.exe and product-key.txt. Xbox maps are imported in the app. Personal builds are never published.",
+  "manifest": null,
+  "before_build": {
+    "commands": [
+      "brew install cmake ninja lld llvm sdl3"
+    ]
+  },
+  "game_data_import": {
+    "ios": "Choose Custom Edition, then Choose Prepared Package\u2026 (combined builds only)",
+    "macos": "Choose Custom Edition, then Choose Prepared Package\u2026 (combined builds only)"
+  },
+  "player_next": {
+    "ios": {
+      "steps": [
+        "Install {file} on your iPhone or iPad, signed with your own Apple developer profile that allows Extended Virtual Addressing and Increased Memory Limit (the guide below shows how).",
+        "Updating? Install it over your current HaloPad with the same signing to keep your profiles and saves.",
+        "Open HaloPad to choose your edition. Xbox: choose Add Your Xbox Disc and select your own ISO/XISO (transfer it to Files on iPhone/iPad). If your build includes Custom Edition, copy Halo-CE.halopad.zip from the HaloPad game data folder in {folder}, choose Custom Edition and then Choose Prepared Package\u2026."
+      ]
+    },
+    "macos": {
+      "steps": [
+        "Unzip {file}, move HaloPad to your Applications folder and open it. It needs no Apple account.",
+        "Updating? Replace the old HaloPad in Applications; your profiles and saves stay.",
+        "Open HaloPad to choose your edition. Xbox: choose Add Your Xbox Disc and select your own ISO/XISO (transfer it to Files on iPhone/iPad). If your build includes Custom Edition, copy Halo-CE.halopad.zip from the HaloPad game data folder in {folder}, choose Custom Edition and then Choose Prepared Package\u2026."
+      ]
+    }
+  },
+  "off_mac": {
+    "url": "https://github.com/chrissotraidis/projectreach#on-windows-linux-or-any-computer",
+    "text": "Build HaloPad's Xbox edition on GitHub's Mac with HaloPad's own build page: fork HaloPad, then run Actions \u2192 Build HaloPad (Xbox edition) in your fork. It makes an iPhone/iPad app and a Mac app, kept for 7 days. Add your own Xbox disc inside the app after installing. To sign it for iPhone or iPad, follow HaloPad's install guide: the app asks for extra memory capabilities, and a free Apple ID worked in one Xbox-edition iPad test but isn't tested more widely. Custom Edition, made from your own PC installer, needs an Apple Silicon Mac.",
+    "translations": {
+      "es": {
+        "tag": "GitHub Cloud Build (edici\u00f3n Xbox)",
+        "text": "Crea la edici\u00f3n Xbox de HaloPad en el Mac de GitHub con la p\u00e1gina de compilaci\u00f3n de HaloPad: haz un fork de HaloPad y ejecuta Actions \u2192 Build HaloPad (Xbox edition) en tu fork. Crea una app para iPhone/iPad y una app para Mac, que se guardan 7 d\u00edas. A\u00f1ade tu propio disco de Xbox dentro de la app despu\u00e9s de instalarla. Para firmarla en iPhone o iPad, sigue la gu\u00eda de instalaci\u00f3n de HaloPad: la app pide capacidades de memoria adicionales, y un Apple ID gratuito funcion\u00f3 en una prueba de la edici\u00f3n Xbox en iPad, pero no se ha probado m\u00e1s. Custom Edition, creada con tu propio instalador de PC, necesita un Mac con Apple Silicon."
+      },
+      "pt": {
+        "tag": "GitHub Cloud Build (edi\u00e7\u00e3o Xbox)",
+        "text": "Crie a edi\u00e7\u00e3o Xbox do HaloPad no Mac do GitHub com a p\u00e1gina de compila\u00e7\u00e3o do HaloPad: fa\u00e7a um fork do HaloPad e execute Actions \u2192 Build HaloPad (Xbox edition) no seu fork. Ela cria um app para iPhone/iPad e um app para Mac, guardados por 7 dias. Adicione seu pr\u00f3prio disco do Xbox dentro do app depois de instalar. Para assinar no iPhone ou iPad, siga o guia de instala\u00e7\u00e3o do HaloPad: o app pede capacidades extras de mem\u00f3ria, e um Apple ID gratuito funcionou num teste da edi\u00e7\u00e3o Xbox no iPad, mas ainda n\u00e3o foi testado mais amplamente. O Custom Edition, criado com o seu pr\u00f3prio instalador de PC, precisa de um Mac com Apple Silicon."
+      }
+    },
+    "github_workflow": true,
+    "tag": "GitHub Cloud Build (Xbox edition)"
+  }
+}

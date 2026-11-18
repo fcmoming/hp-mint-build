@@ -1,0 +1,133 @@
+# PadMint status
+
+What each recent PadMint release changed. Updated **18 November 2026**.
+
+**Next work:** [What PadMint still needs](docs/REMAINING.md) is the current
+queue. Older releases, from 0.5.22 back, and the October build evidence are in
+[STATUS-HISTORY.md](STATUS-HISTORY.md).
+
+**v0.6.10:** adds [ETPad](https://github.com/chrissotraidis/etpad), Wolfenstein: Enemy Territory on iPad through ET: Legacy 2.86.2, with live servers, offline bots, touch and controller play. There is no game file to choose: ETPad downloads Splash Damage's free official data in the app. On an Apple Silicon Mac with Xcode and `brew install cmake ninja xcodegen`, choose ETPad and PadMint builds a personal IPA from the published [v0.1.0](https://github.com/chrissotraidis/etpad/releases/tag/v0.1.0) release in about 13 minutes using about 3.2 GB. The player check passed against the clean release checkout with Apple's Python 3.9 and an empty PadMint folder (gate PASS, no findings, launch link `padmint-etpad`), and a development-signed build of the release commit launched on an iPad Pro 12.9-inch (6th generation) into an offline bot round and the live server list. ETPad's Mac app stays unoffered for now. The iPhone/iPad library lists it under PC with ETPad's poster art; ETPad takes one of the 25 links the library checks, so ProjectReach now says *Tap Play to check*.
+
+**v0.6.9:** adds [OpenTTDPad](https://github.com/chrissotraidis/OpenTTDPad), OpenTTD 15.3 on iPad with touch-first construction. There is no game file to choose: the free OpenGFX, OpenSFX and OpenMSX sets are built in. On an Apple Silicon Mac with Xcode 26 or newer, choose OpenTTDPad and PadMint builds a personal IPA from the published [v0.2.0](https://github.com/chrissotraidis/OpenTTDPad/releases/tag/v0.2.0) release in about 7 minutes using about 2 GB. The player check passed against that release with Apple's Python 3.9 and an empty PadMint folder, and the PadMint-built copy installed and launched on an iPad Pro 12.9-inch (6th generation) with iPadOS 27.2.1. The iPhone/iPad library lists it under PC with the OpenTTD logo; OpenTTDPad takes one of the 25 links the library checks, so RingPad now says *Tap Play to check*.
+
+**v0.6.8:** HarkinianPad's card shows its blue ocarina icon from [HarkinianPad v0.2.3](https://github.com/chrissotraidis/harkinianpad/releases/tag/v0.2.3) instead of the old ship's wheel, and RingPad's 3D box gets its Sonic Adventure back cover. A finished step's summary in the PadMint window, such as *You add it inside the app after installing*, now wraps onto more lines instead of being cut off with "…"; it was checked on HarkinianPad's page at full width, 820 px and 420 px ([#283](https://github.com/chrissotraidis/padmint/pull/283), [#284](https://github.com/chrissotraidis/padmint/pull/284)).
+
+**v0.6.7:** adds [RingPad](https://github.com/chrissotraidis/ringpad), Sonic Adventure on iPhone and iPad from your own Dreamcast disc. On an Apple Silicon Mac with Xcode and CMake, choose RingPad and your Sonic Adventure PAL v1.003 `.gdi` (with its three tracks in the same folder); PadMint builds a personal IPA in about 8 minutes using about 2 GB. RingPad 0.1.0's player check passed from a clean checkout with Apple's Python 3.9 and an empty PadMint folder, and the built app reached the Chaos 0 fight at full speed on an iPad Pro (M2). The iPhone/iPad library shows Dreamcast as a console, with RingPad in a jewel case; RingPad takes the 25th link the library checks, so SnapPad now says *Tap Play to check*.
+
+**v0.6.6:** reconciles DarkPad 0.1.1's experimental Mac Catalyst target with the catalog: PadMint still offers iPhone/iPad, and the Mac app remains a documented source build. Linux x64 module builds now get the same LLVM system-library check and compatibility link as ARM64; this fixes the missing `libxml2.so.2` failure on Ubuntu 26.04. The iPhone/iPad library includes the controller navigation changes merged since 0.6.5: D-pad game selection, shoulder-button console/page changes, A to play, View for details, X to search, Y to change layout and right-stick scrolling/box rotation. Search stays hidden until requested when a controller is connected, and touch dismisses controller selection. These latest library changes have simulator checks; physical controller, trackpad and external-display acceptance remains pending. MaskPad's card uses its new crescent/controller icon, and PeonPad's install steps explain its stopped message and diagnostic log.
+
+**v0.6.5:** on a Mac where Homebrew's GNU tools come first on `PATH`, game builds now get Apple's own `stat`, `sed`, `find`, `grep` and `tar`, which their scripts are written for: PadMint leaves Homebrew's `…/libexec/gnubin` folders off the build's `PATH` and the build log names them. On such a Mac a GoldenPad 0.3.0 build stopped at Package after 16 minutes ([goldenpad#55](https://github.com/chrissotraidis/goldenpad/issues/55)); [GoldenPad 0.3.1](https://github.com/chrissotraidis/goldenpad/releases/tag/v0.3.1) fixes its own scripts too. Both fixes came from DoubleGate ([#264](https://github.com/chrissotraidis/padmint/pull/264), [goldenpad#56](https://github.com/chrissotraidis/goldenpad/pull/56)). Storage's Remove now works on Windows for game downloads (Git's read-only files) and for tools with paths over 260 characters, the catalog is read once per run (listing Storage with 21 downloads went from 1.1 s to 0.01 s on an M3 Max), and on Windows PadMint waits and tries again when antivirus holds a folder it renames after unpacking a tool or downloading a game ([#260](https://github.com/chrissotraidis/padmint/pull/260), [#255](https://github.com/chrissotraidis/padmint/issues/255)). In the iPhone/iPad app, an older copy keeps its Play button when a new game joins the links the newest app checks ([#261](https://github.com/chrissotraidis/padmint/pull/261)), and double-tapping the front box spins it while it sways ([#262](https://github.com/chrissotraidis/padmint/pull/262)); both were checked in the iOS 27 simulator, not on a device. The README and the player guide now explain the iPhone/iPad app from download to first launch.
+
+**v0.6.4:** SunPad (Super Mario Sunshine) can be built for iPhone and iPad on a Windows PC, as [SunPad 0.3.0](https://github.com/chrissotraidis/sunpad/releases/tag/v0.3.0) allows (experimental; Windows 11 ARM64 and x64 with Visual Studio Build Tools, and Linux ARM64 and x86-64). Players asked for this. PadMint 0.6.3 for Windows built it on Windows 11 ARM64 from the original disc in about 2 h 50 min, and that copy was installed and played on an iPad Pro, including a save and a reload. A native x64 PC hasn't been tried. Macs build SunPad exactly as before. The [SunPad Windows goal](docs/SUNPAD_WINDOWS_GOAL.md) records each step ([#257](https://github.com/chrissotraidis/padmint/pull/257)).
+
+**v0.6.3:** the iPhone/iPad app's 3D boxes get real backs and spines. When official box art is on, the app now also downloads each game's back cover (36 games) and spine (29 games) from the LaunchBox Games Database, matched by title and console, North American scans first; spines printed in another language are left out, and a game without a scan keeps the plain back or drawn spine. TribesPad now shows up as the three games it holds, Starsiege: Tribes, Tribes 2 and Tribes: Vengeance, each with its own box; all three are installed when TribesPad is and open TribesPad. LaunchBox's large scans get 60 seconds to download; libretro keeps 20 before its GitHub copy is tried ([#252](https://github.com/chrissotraidis/padmint/pull/252)).
+
+**v0.6.2:** BlueWake (Wind Waker) can be built for iPhone and iPad on a Windows PC, as BlueWake 0.11.0 allows (experimental; Windows 11 ARM64 and x64, with Visual Studio Build Tools and C++ Clang). PadMint 0.6.1 still listed BlueWake as Mac only, so Windows players saw it dimmed. A game release can no longer leave PadMint behind like that: `scripts/player-check.sh`, which every game release must pass, now fails after publishing when PadMint's catalog hides or offers something the release doesn't build, and lists what the catalog will need before tagging. The daily catalog check looks for the same mismatch and opens an issue when it fails ([#250](https://github.com/chrissotraidis/padmint/pull/250)).
+
+**v0.6.1:** the iPhone/iPad app now gets its box art even when libretro's thumbnail server is slow or down. For a libretro cover, it tries the same picture in libretro's GitHub repositories when that server fails or gives no answer within 20 seconds; on 8 November libretro's server stopped answering for 27 of the 39 covers. `ios/scripts/check-covers.py` now checks the GitHub copy of every libretro cover too. The recorded tours for release videos are in `ios/UITests/ShowcaseUITests.swift` ([#247](https://github.com/chrissotraidis/padmint/pull/247)).
+
+**v0.6.0:** PadMint now has an app on iPhone and iPad, released with PadMint as `PadMint-ios-unsigned.ipa` and built from [ios/](ios/README.md) in this repository. It gathers the games you've built with PadMint into one library: your games as 3D boxes on a shelf or carousel, a grid or list of the whole catalog, sorting, search and console filters, and a page for each game with a Play button that opens it through its `padmint-<game>://` link. Official box art and titles are off until the player turns them on; the app then downloads them from public sources (libretro thumbnails, Steam, GOG, Wikipedia), so PadMint carries no box art. It finds games built with PadMint 0.5.34 or newer, and iOS 27 lets it check at most 25 links, so a few games say *Tap Play to check*. The library is experimental. PadMint itself now tries a tool download again after a busy server's 429 or 5xx reply, waiting 5, 15 and 30 seconds ([#244](https://github.com/chrissotraidis/padmint/pull/244)), and [What PadMint still needs](docs/REMAINING.md) records the Linux test builds of the six N64/GameCube routes and AgePad's fix status ([#245](https://github.com/chrissotraidis/padmint/pull/245)).
+
+**v0.5.34:** every iPhone/iPad app PadMint builds now answers to a link named after its game, such as `padmint-sunpad://`, so another app can tell it is installed and open it ([#242](https://github.com/chrissotraidis/padmint/pull/242)). PadMint adds the link to the app's `Info.plist` after checking the finished IPA and before recording its checksum; nothing else in the app changes, and builds on GitHub's Mac get it too. A SunPad build with the link was re-signed and installed on an iPad Pro, and iOS opened SunPad from the link. [What PadMint still needs](docs/REMAINING.md) now counts Intel Macs separately (they build only KartPad themselves) and notes that no Windows route has run on a native x64 PC yet.
+
+**v0.5.33:** a game build no longer stops for good with *Backend has local changes* when PadMint's own download of the game's source has changed. PadMint names the changed files, keeps the old copy aside and builds from a fresh download. A SunPad 0.2.3 player hit this on every run. `build --repo` still refuses a changed checkout, and now lists the changed files ([#239](https://github.com/chrissotraidis/padmint/pull/239)).
+
+**v0.5.32:** adds **Lemonade Remixed** (Lemonade Tycoon Deluxe, Windows 2002) as a Mac app built on an Apple Silicon Mac, with no game file at build time: the player chooses their own Setup.exe in the app. Its recipe comes from the [Lemonade Remixed 1.0.1 release](https://github.com/chrissotraidis/lemonaderemixed/releases/tag/v1.0.1), and the player check passed before tagging and after publishing. On Intel Macs, Windows and Linux its card says the Mac version is made on an Apple Silicon Mac ([#238](https://github.com/chrissotraidis/padmint/pull/238)).
+
+**v0.5.31:** the README is rewritten as a short player page, with the details in a new [player guide](docs/GUIDE.md) and
+[developer guide](docs/DEVELOPING.md), and a [docs index](docs/README.md). The
+release ZIP now carries every guide. DarkPad's help link opens the guide.
+When PadMint puts a game module into its app, it now aligns the module's string
+table the way recent iOS versions require ([#234](https://github.com/chrissotraidis/padmint/pull/234)).
+Four in-app strings are fixed in English, Spanish and Portuguese ([#236](https://github.com/chrissotraidis/padmint/pull/236)):
+the home page says *Your game file stays on this computer* instead of promising
+everything runs locally, update help tells Mac and Linux players to use the
+version button, KartPad's ready-to-play download is named as Android, and
+ready-made apps are called iPad apps everywhere. HaloPad's
+[0.3.14](https://github.com/chrissotraidis/projectreach/releases/tag/v0.3.14)
+finishes builds when Apple's `actool` crashes on its icon
+([#220](https://github.com/chrissotraidis/padmint/issues/220)); PadMint picks it
+up automatically, so this release changes nothing for HaloPad itself.
+
+**v0.5.30:** Adds NightPad (007: Nightfire, Xbox) to the Apple Silicon Mac → iPhone/iPad catalog, with its app icon, tool requirements and sideloading/import/update instructions. PadMint reads the player's own Xbox disc image during the build and hands over a personal unsigned IPA plus a NightPad game data folder, which the player imports in the app. NightPad releases contain only source, a recipe and checksums; PadMint builds the app on the player's Mac.
+
+**v0.5.29:** clearer choices on every computer. A game's build step is named
+for the computer (**Build on this Mac**, **this Windows PC**, **this Linux
+computer**), and a short note beside it gives a route's known limit: the six
+new Windows routes have no device or native x64 check yet, and AgePad 0.1.0 can
+stop after Steam updates. On Linux, pages say before a build or download that
+installing on an iPhone directly from Linux isn't tested, and the install steps
+start by copying the app to a Windows PC or Mac. GitHub Cloud Build cards say
+GitHub compiles on a temporary Mac while you start the run on GitHub, without
+promising a build time. BlueWake's card offers its Windows and Linux downloads;
+HaloPad's covers both editions and signing; DarkPad's says its route currently
+requires a private copy of PadMint, without claiming a technical reason. All of
+it is in English, Spanish and Portuguese. The README opens with the three routes
+and one table of what each computer builds. What changed, the checks and the
+open DarkPad decision are in [Build-route wording](docs/BUILD_ROUTE_COPY.md).
+
+**v0.5.28:** six more games build for iPhone and iPad on a Windows PC, marked
+experimental: **GoldenPad, BearBirdPad, BananaPad, SquirrelPad, DinoPad and
+MeleePad**. Each game's new release (GoldenPad, BearBirdPad, BananaPad and
+MeleePad 0.3.0, DinoPad 0.3.1, SquirrelPad 0.2.0) carries a Windows recipe and
+an app without game code. On Windows PadMint asks for Visual Studio's C++ Build
+Tools, installs the pinned compilers, builds the game from the player's own ROM or disc and
+adds it to that app; on a Mac the build is unchanged. Before this PadMint was
+released, PadMint 0.5.27's `padmint make <game> ios` built each published
+release on Windows 11 ARM64 (SquirrelPad 103 s, BananaPad 134 s, GoldenPad
+126 s, BearBirdPad 155 s, DinoPad 196 s, MeleePad 3,863 s), and PadMint's player
+check passed on a Mac before tagging and after publishing. Not checked yet: a
+Windows-built copy on an iPhone or iPad, and a native x64 Windows PC. The
+catalog audit now applies its Apple Python 3.9 check only to Mac build steps.
+
+**v0.5.27:** a cleaner window, the same on Mac, Windows and Linux. Every
+game page now has numbered steps marked ✓ as they're done: **Where will you
+play?**, **Your own game file** (shown as done when the game takes its file in the
+app) and **Build on this computer**. When every program is installed, setup folds
+to one green line; anything missing is listed first. The build's plan and the
+install steps open on request, several file choices fold under one question, and
+an older copy says how to update. GitHub Cloud Build moves to **Other ways to
+build** at the bottom of Mac pages. Games built elsewhere, and ready-made apps,
+use one card named for the route (**Build on GitHub's Mac**, **Needs an Apple
+Silicon Mac**, **Get the ready-made app**). The library has one search row with a
+systems menu and a single row of tabs, and rows no longer repeat where they build.
+Storage leads with three plain totals and groups everything removable under
+**Safe to remove** and **App and extra downloads**, each with **Remove all**.
+Settings is grouped, and no longer stays visible under every page after it has
+been opened once. The README screenshot is current.
+On a computer a game can't build on, `padmint doctor` now names the computers
+that can, instead of listing Homebrew and Xcode installs (found on Linux).
+
+This release also lists **DarkPad** under GitHub Cloud Build (experimental; it
+currently requires a private copy of PadMint; see [Build-route wording](docs/BUILD_ROUTE_COPY.md#darkpad-is-not-technically-a-different-kind-of-personal-build))
+and shows **HaloPad's** own Xbox-edition workflow there, so 17 games can be built for
+iPhone/iPad from Windows or Linux without a Mac. A clean hosted DarkPad build
+passed; installing and playing that build still need testing. SquirrelPad stays
+local because it reads the player's ROM while compiling.
+
+**v0.5.26:** RAtouch's download instructions now point to the latest unsigned
+IPA and its matching checksum in English, Spanish and Portuguese, instead of
+directing players to a fixed older version. Its existing download route stays
+the same. Follow-up importer tests reproduced defects in UTP, VaultPad, SunPad,
+RAtouch and BallPad; the [audit](https://github.com/chrissotraidis/bellpad/blob/main/docs/FILE_IMPORT_AUDIT.md)
+records the individual fixes and release verification. App updates deliver
+those corrections; PadMint does not contain their importers.
+
+**v0.5.25:** BellPad's iPhone/iPad finishing steps explain its 0.2.3 ISO/GCM
+import and the Files → BellPad → Import fallback, while preserving the normal
+sideloading/update instructions. SquirrelPad finishing steps also explain that
+the same supported ROM used to build the app must be selected inside it after
+installation, with import progress in 0.1.3 or newer. The compatibility record distinguishes five
+projects with selection reports from unconfirmed source risks. Game fixes come
+from rebuilding the corresponding game release; PadMint does not replace the
+apps' own importers. Catalog and recipe JSON is decoded as UTF-8 on every host,
+so Windows displays accented text and folder arrows correctly.
+
+This release also includes host-neutral cloud-build wording for Windows/Linux
+and a **View guide** fallback for existing project routes without a card label,
+including HaloPad, from #217. These label fixes add no build route. Cloud-route
+PR #216 shipped later, in 0.5.27.
+
+**v0.5.24:** Removed Melee PC. It built 999sian/melee-pc, another person's project, and PadMint lists only Chris's own ports (AGENTS.md now says so, and `tests/test_catalog_ownership.py` checks it). MeleePad no longer links to it, and the GitHub workflow no longer offers it.
+
+**v0.5.23:** Adds DarkPad (Perfect Dark) to the Apple Silicon Mac → iPhone/iPad catalog, with its original icon, tool requirements and sideloading/import/update instructions. It builds a personal unsigned IPA; the player supplies a USA Rev 1 / v1.1 ROM in the app. DarkPad releases contain only source, a recipe and checksums; PadMint builds the app on the player’s Mac.
